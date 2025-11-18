@@ -77,11 +77,11 @@ p.ex1 {
               </tr>
           </table>
           <h3 id="Introduction">Introduction</h3>
-          <p>
+          <pre id="Introduction_InText">
 When an object surpasses the speed of sound, sound waves emitted by the aircraft pile up and form one single shockwave. This results in the sonic boom.
 This sonic boom is the reason why non-military aircraft cannot exceed the speed of sound over land, as the shockwave generated can cause structural damage and disrupt wildlife.
 However, new advancements in technology and a new approach to aircraft design are leading the way to supersonic aircraft producing a lower decibel sonic boom.
-          </p>
+          </pre>
 
           <h3 id="References">References</h3>
           <p>
@@ -125,7 +125,40 @@ However, new advancements in technology and a new approach to aircraft design ar
                   </tr>
                   
               </table>
+          
+ <!-- //////////////////////////////////////////////////////////////////////////////// -->
+  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////////////////////////// -->
+<!-- Placeholder for total word count -->
+<p id="totalWordCount"></p>
+<hr>
+<script>
+  // Function to calculate and display word count for a specified section
+  function displayWordCount(sectionId, outputId) {
+    // Get the text content from the specified section
+    const text = document.getElementById(sectionId).textContent;
+    // Split text into words based on spaces and filter out any empty strings
+    const wordArray = text.trim().split(/\s+/);
+    // Count the words
+    const wordCount = wordArray.length;
+    // Return the word count for summing purposes
+    return wordCount;
+  }
+  // Function to calculate and display total word count from selected sections
+  function displayTotalWordCount() {
+    // Calculate word count for each section and accumulate the total
+    const IntroductionCount = displayWordCount("Introduction_InText");
+    const AnalysisCount = displayWordCount("Analysis_InText");
+    // Calculate the sum of all selected sections
+    const totalWordCount = IntroductionCount + AnalysisCount;
+    // Display the total word count
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+  }
+  // Run the function for specific sections and display total count when the page loads
+  window.onload = displayTotalWordCount;
+</script>
 
+          
 
 <div id="last-updated">Loading last update time...</div>
 <!-- Verify Button -->
